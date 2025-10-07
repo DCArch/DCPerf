@@ -212,10 +212,10 @@ if ! command -v hhvm &> /dev/null; then
     cd ${SCRIPT_DIR}/hhvm && git clone --branch OpenSSL_1_1_1b --depth 1 https://github.com/openssl/openssl.git
     cd ${SCRIPT_DIR}/hhvm/openssl && ./config --prefix=${SCRIPT_DIR}/hhvm/builddeps && make -j64 && make install
     rm ${SCRIPT_DIR}/hhvm/openssl -rf
-    # MAriaDB
-    sudo systemctl start mariadb
-    sudo systemctl enable mariadb
-    sudo mysql_secure_installation
+    # # MAriaDB
+    # sudo systemctl start mariadb
+    # sudo systemctl enable mariadb
+    # sudo mysql_secure_installation
     # GCC
     cd ${SCRIPT_DIR}/hhvm && git clone https://github.com/BobSteagall/gcc-builder && cd gcc-builder && git checkout gcc7
     cd ${SCRIPT_DIR}/hhvm/gcc-builder && grep -rlIZPi 'export GCC_VERSION=7' | xargs -0r perl -pi -e 's/export GCC_VERSION=7\..*\.0/export GCC_VERSION=7.5.0/gi;'
